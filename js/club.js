@@ -37,5 +37,40 @@ notes.sort((a,b) => a-b);
 console.log(notes.join(" - "));
 console.log("Admises :", notes.filter(note => note >= 10));
 console.log("Sur 100 :", notes.map(note => note * 5));
-console.log("Somme :", notes.reduce((acc, note) => acc + note, 0));
-console.log("Moyenne :", (notes.reduce((acc, note) => acc + note, 0) / notes.length).toFixed(2));
+console.log("Somme :", notes.reduce((x, note) => x + note, 0));
+console.log("Moyenne :", (notes.reduce((x, note) => x + note, 0) / notes.length).toFixed(2));
+console.log("----Exercice 4----");
+const membre = {
+  prenom: "Sarra",
+  age: 19,
+  ateliers: ["HTML", "CSS", "JS"],
+  cotisationPayee: false,
+  sePresenter() {
+    return "Je suis " + this.prenom + ", " + this.age + " ans, inscrite à " + this.ateliers.length + " ateliers : " + this.ateliers.join(",") + ".";
+  }
+};
+console.log("Le prenom  : " + membre.prenom);
+console.log("age  : " + membre["age"]);
+membre.email=membre.prenom+"@club.tn";
+/*
+const cles=Object.keys(membre);
+for (let i=0; i<cles.length; i++){
+    console.log(cles[i] + " : " + membre[cles[i]]);
+}*/
+for(i in membre){
+    if(typeof membre[i] !== "function"){
+        console.log(i + " : " + membre[i]);
+    }
+}
+console.log(membre.sePresenter());
+const membres = [
+    { prenom: "Sarra", age: 19, cotisationPayee: true },
+    { prenom: "Ali", age: 22, cotisationPayee: false },
+    { prenom: "Yasmine", age: 18, cotisationPayee: true }
+];
+console.log(membres.map(m => m.prenom));
+console.log(membres.filter(m => !m.cotisationPayee).map(m => m.prenom));
+const yasmine = membres.find(m => m.prenom === "Yasmine");
+console.log(yasmine);
+console.log(yasmine ? yasmine.age : "Non trouvé");
+console.table(membres);
